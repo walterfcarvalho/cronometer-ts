@@ -54,7 +54,7 @@ const Task = ({ task, prevStep, nextStep, autoStart, setAutoStart }: Props) => {
 return <div className={`task-container bg-${task.type}`}>
   {/* return <div className={`task-container bg-${task.type}`}> */}
 
-    {seconds === 5 && task.type === 'i' && start &&
+    {seconds >= 8 && task.type === 'i' && start &&
       <SoundEffect   
         audio={'../fiveSeconds.wav'}
       />

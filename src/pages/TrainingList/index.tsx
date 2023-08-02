@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../../components/AppContext/AppProvider";
-import * as Io from 'react-icons/Io'
 import Head from "../../components/Head";
 import Footer from "../../components/Footer";
 import TrainingItem from "../../components/TrainingItem";

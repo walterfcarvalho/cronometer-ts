@@ -1,0 +1,54 @@
+footer {
+  background-color: #0099CC;
+  font-family: Helvetica;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+}
+
+.workouts-btn {
+  left:50%;
+  bottom: 2%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  bottom: 0px;
+}
+
+.tl {
+  height: 100%;
+  width: 100%;
+  /* background-color: white; */
+}
+
+.tl-item {
+  display: flex;
+  align-items: center;
+  background-color: #4da6ff;
+  margin: .5em .2em;
+  font-size: 18px;
+  padding: .2em;
+}
+
+.tl-item span {
+  width: 80%;
+  text-align: left;
+  left: 8px;
+}
+
+.tl-item-btn {
+  background-color: inherit;
+  margin-right: 8px;
+  size: 60vh;
+}
+
+
+.rstm-tree-item {
+  font-size: 12px;
+}
+
+svg {
+  background-color: var(--blue);
+  border-radius: 50%;
+  /* margin-left: .5em;   */
+}

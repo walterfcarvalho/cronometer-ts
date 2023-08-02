@@ -1,0 +1,33 @@
+.animate-left {
+  position: relative;
+  animation: animateLeft 0.5s
+}
+
+@keyframes animateLeft {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+
+  to {
+    left: 0;
+    opacity: 1
+  }
+}
+
+.animate-right {
+  position: relative;
+  animation: animateRight 0.4s
+}
+
+@keyframes animateRight {
+  from {
+    right: -300px;
+    opacity: 0
+  }
+
+  to {
+    right: 0;
+    opacity: 1
+  }
+}

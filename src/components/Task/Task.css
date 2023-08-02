@@ -1,0 +1,91 @@
+.task-container {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.task-exit {
+  width: 100%;
+  text-align: right;
+  margin: .5em 1em 0 0;
+  font-size: 26px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.task-name {
+  display: flex;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 110%;
+  text-align: center;
+  height: 10vh;
+  margin-bottom: .2em;
+  text-transform: uppercase;
+  justify-content: center;
+}
+
+.task-name svg {
+  width: 20%;
+}
+
+.task-play-controls {
+  display: flex;
+  margin-top: .5em;
+  width: 95%;
+  justify-content: space-around;
+  align-items: stretch;
+  margin:1em;
+  /* height: 9vh; */
+}
+
+.task-play-controls-btn,
+.task-play-controls-prev-next-btn {
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 29px;
+  width: 20vw;
+  color: white;
+  padding: 0;
+  height: 10vh;
+}
+
+.task-play-controls > button {
+  border: 2px solid black;
+  background-color: var(--blue);
+  color: var(--white);
+  border-radius: 10px;
+  width: 30w;
+  height: 8vh;
+}
+
+.bg-t {
+  background-color: #ff3399;
+}
+
+.bg-r {
+  background-color: #00cc00;
+}
+
+.bg-w {
+  background-color:  #993366;
+}
+
+path {
+  height: 12px;
+}
+
+.task-play-controls-prev-next {
+  margin-top: .5em;
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+}
+
+.task-play-controls-prev-next-btn {
+  width: 30vw;
+}

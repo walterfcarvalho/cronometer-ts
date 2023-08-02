@@ -1,0 +1,76 @@
+button {
+  font-size: 14px;
+  background-color: var(--gray);
+  margin-left: .5em;
+  border: none;
+}
+
+.tn-group {
+  margin: .5em .1em 0 .2em;
+  padding: .2em .1em;
+  background-color: var(--blue);
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.tn-item {
+  margin-left: 1em;
+  margin-top: .4em;
+  /* margin-right: .2em; */
+  padding-left: .2em;
+  background-color: var(--blue);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+details>summary>div {
+  display: none;
+}
+details[open]>summary>div {
+  display: flex;
+  padding: .2em .1em;
+  justify-content: space-between;
+}
+
+input {
+  width: 40%;
+  text-transform: capitalize;
+  border:none;
+}
+input {
+  background-color: var(--blue);
+  text-align: left;
+  /* width: 50px; */
+  padding: 0;
+  font-size: 16px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  width: 150px;
+  background: none;
+}
+input[type="number"]::-webkit-calendar-picker-indicator {
+  width: 10px;
+  background: none;
+}
+
+div > span {
+  padding: 0 .5em;
+}
+
+.tsk-label {
+  width: 70%;
+  text-align: left;
+}
+
+.item-details-btn { 
+  display:flex;
+}
+
+.item-details-data { 
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+}

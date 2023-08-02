@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import TrainingItem from "../../components/TrainingItem";
 import BtnAction from "../../components/BtnAction";
 import { taskGroup } from '../../components/Const'
+import {GrAddCircle} from 'react-icons/gr'
 
 import './traininList.css'
 
@@ -77,7 +78,7 @@ return <>
       )}
     </div>
 
-    <Io.IoMdAddCircleOutline 
+    <GrAddCircle 
       onClick={trainingNew} 
       className={"workouts-btn"}  
       size={'50px' } 

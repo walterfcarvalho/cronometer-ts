@@ -1,4 +1,4 @@
-import * as Io from 'react-icons/Io'
+import {MdArrowBackIos} from 'react-icons/md'
 import { useNavigate } from "react-router-dom"
 import './head.css'
 
@@ -12,7 +12,7 @@ const Head = ({ title, goBack }: Props) => {
   return <>
     <nav className="app-nav">
       {goBack &&
-        <Io.IoIosArrowBack
+        <MdArrowBackIos
           size={'35px'}
           onClick={() => navigator(-1)}
         />

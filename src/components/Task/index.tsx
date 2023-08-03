@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useTimer } from 'react-timer-hook';
 import * as Bs from 'react-icons/bs';
 
@@ -14,29 +14,36 @@ interface Props {
   setAutoStart: () => void
 }
 
-const mmSsToSecond = (mmss:string) => {
+const mmSsToSecond = (mmss: string) => {
   const aScs = mmss.split(":")
   return (+aScs[0] * 60) + (+aScs[1])
 }
 
 const getExpiryTime = (mmss: string) => {
   const expiryTimestamp = new Date();
-  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + mmSsToSecond(mmss) );
+  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + mmSsToSecond(mmss));
   return expiryTimestamp
 }
 
 const Task = ({ task, prevStep, nextStep, autoStart, setAutoStart }: Props) => {
-  
-  const expiryTimestamp:Date = getExpiryTime(task.duration)
+
+  const expiryTimestamp: Date = getExpiryTime(task.duration)
+
+  const onExpire = () =>{
+    if (task.type === 't') {
+      setTimeout( () => nextStep(), 1600)
+    } else
+      nextStep()
+  }
 
   const {
     seconds, minutes, hours, days, isRunning, start, pause, resume, restart
-  } = useTimer({ expiryTimestamp, onExpire: () => nextStep(), autoStart: autoStart });
-  
-  const addTime = (mmss:string) => {
+  } = useTimer({ expiryTimestamp, onExpire: onExpire , autoStart: autoStart });
+
+  const addTime = (mmss: string) => {
     const time = new Date();
-    time.setSeconds(time.getSeconds() + days 
-    + (hours * 3600 ) + (minutes * 60) + seconds +  mmSsToSecond(mmss));
+    time.setSeconds(time.getSeconds() + days
+      + (hours * 3600) + (minutes * 60) + seconds + mmSsToSecond(mmss));
     restart(time)
   }
 
@@ -46,41 +53,43 @@ const Task = ({ task, prevStep, nextStep, autoStart, setAutoStart }: Props) => {
   }
 
   const formatDate = () => {
-    const mm:string = minutes.toString().length < 2 ? '0'.concat(minutes.toString()) : minutes.toString()
-    const ss:string = seconds.toString().length < 2 ? '0'.concat(seconds.toString()) : seconds.toString()
+    start
+    const mm: string = minutes.toString().length < 2 ? '0'.concat(minutes.toString()) : minutes.toString()
+    const ss: string = seconds.toString().length < 2 ? '0'.concat(seconds.toString()) : seconds.toString()
     return `${mm}:${ss}`
-  } 
+  }
 
-return <div className={`task-container bg-${task.type}`}>
-  {/* return <div className={`task-container bg-${task.type}`}> */}
-
-    {seconds >= 8 && task.type === 'i' && start &&
-      <SoundEffect   
-        audio={'../fiveSeconds.wav'}
+  return <div className={`task-container bg-${task.type}`}>
+    <SoundEffect
+      condition={(minutes === 0 && seconds <= 5 && task.type === 'i')}
+      audio={'/Sounds/prepare.wav'}
       />
-    }
 
-    {seconds === 2 && task.type === '' &&
-      <SoundEffect   
-        audio={'../prepare.wav'}
-      />
-    }
+    <SoundEffect
+      condition={(minutes === 0 && seconds <= 5 && task.type === 't')}
+      audio={'/Sounds/fiveSeconds.wav'}
+    />
 
-    <Link 
-      to={"/"} 
-      className="task-exit" 
+    <SoundEffect
+      condition={minutes === 0 && seconds === 0 && task.type === 't'}
+      audio={'/Sounds/roundEnd.mp3'}
+    />
+
+    <Link
+      to={"/"}
+      className="task-exit"
     >
       X
     </Link>
 
     <span className="task-name">
-      {task.label}
+      {`${task.type} ${task.label}`}
     </span>
-    
+
     <ProgressBar
       min={minutes}
       sec={seconds}
-      duration={ mmSsToSecond(task.duration)  }
+      duration={mmSsToSecond(task.duration)}
     >
       <span className="task-time">
         {formatDate()}
@@ -110,15 +119,15 @@ return <div className={`task-container bg-${task.type}`}>
         onClick={() => restart(getExpiryTime(task.duration))}
       />}
 
-      <button 
+      <button
         // className="task-play-controls-btn"
-        onClick={ () => addTime('00:10') }
-        >
+        onClick={() => addTime('00:10')}
+      >
         +10
       </button>
-      <button 
+      <button
         // className="task-play-controls-btn"
-        onClick={ () => addTime('00:30') }
+        onClick={() => addTime('00:30')}
       >
         +30
       </button>
@@ -135,7 +144,6 @@ return <div className={`task-container bg-${task.type}`}>
         onClick={() => nextStep()}
       />
     </div>
-    <h2>{task.type} </h2>
   </div>
 }
 export default Task;

@@ -48,9 +48,10 @@ const Workout = () => {
                 : workout.idxTask})
                 
   const nextStep = () => {
-    setWorkout({ ...workout, idxTask: workout.idxTask < workout.tasks.length -1 
-      ? ++workout.idxTask
-      : workout.idxTask
+    setWorkout({
+      ...workout, idxTask: workout.idxTask < workout.tasks.length - 1
+        ? ++workout.idxTask
+        : workout.idxTask
     })
   }
 

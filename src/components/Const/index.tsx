@@ -90,7 +90,7 @@ export const treinos: ITask[] = [{
 
 
   {
-    key: -1,
+    key: -2,
     label: "2 Ficha C Carol",
     type:"g",
     param: {

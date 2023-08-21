@@ -16,7 +16,7 @@ export const warmup = {
 export const interval = {
   type: "i",
   key: -2,  
-  label: 'Prepare to the next',
+  label: 'Next is',
   loops: 1,
   duration: '00:30' 
 } satisfies ITask
@@ -60,7 +60,8 @@ export const treinos: ITask[] = [{
   },
   nodes: [
     { key: 0, type:"g", label: 'aquecimento', loops: 2, duration: "00:30", nodes:[
-      { key: 2, label: "Polichinelo", duration: '00:30', type:'t', nodes:[], loops:1 }
+      { key: 2, label: "Polichinelo", duration: '00:10', type:'t', nodes:[], loops:1 },
+      { key: 2, label: "agachamento", duration: '00:10', type:'t', nodes:[], loops:1 }
     ]}
   ]
 },

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useTimer } from 'react-timer-hook';
 import * as Bs from 'react-icons/bs';
 
@@ -8,6 +7,7 @@ import './Task.css'
 
 interface Props {
   task: ITask,
+  nextTask?:ITask
   prevStep: () => void
   nextStep: () => void
   autoStart: boolean
@@ -25,7 +25,7 @@ const getExpiryTime = (mmss: string) => {
   return expiryTimestamp
 }
 
-const Task = ({ task, prevStep, nextStep, autoStart, setAutoStart }: Props) => {
+const Task = ({ task, nextTask, prevStep, nextStep, autoStart, setAutoStart }: Props) => {
 
   const expiryTimestamp: Date = getExpiryTime(task.duration)
 
@@ -62,29 +62,33 @@ const Task = ({ task, prevStep, nextStep, autoStart, setAutoStart }: Props) => {
   return <div className={`task-container bg-${task.type}`}>
     <SoundEffect
       condition={(minutes === 0 && seconds <= 5 && task.type === 'i')}
-      audio={'/Sounds/prepare.wav'}
-      />
+      fileName={'/Sounds/prepare.mp3'}
+    />
+
+    <SoundEffect
+      condition={(task.type === 't' && isRunning)}
+      fileName={'/Sounds/roundStart.mp3'}
+    />
 
     <SoundEffect
       condition={(minutes === 0 && seconds <= 5 && task.type === 't')}
-      audio={'/Sounds/fiveSeconds.wav'}
+      fileName={'/Sounds/fiveSeconds.mp3'}
     />
 
     <SoundEffect
       condition={minutes === 0 && seconds === 0 && task.type === 't'}
-      audio={'/Sounds/roundEnd.mp3'}
+      fileName={'/Sounds/roundEnd.mp3'}
     />
 
-    <Link
-      to={"/"}
-      className="task-exit"
-    >
-      X
-    </Link>
-
     <span className="task-name">
-      {`${task.type} ${task.label}`}
+      {`${task.label}`}
     </span>
+
+    { nextTask &&
+      <span className="task-name">
+        {`${nextTask.label}`}
+      </span>
+    }
 
     <ProgressBar
       min={minutes}

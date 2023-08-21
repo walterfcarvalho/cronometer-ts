@@ -1,13 +1,13 @@
 interface Props {
   condition:boolean
-  audio:string
+  fileName:string
 }
 
-const SoundEffect = ({condition, audio}: Props) => {  
+const SoundEffect = ({condition, fileName}: Props) => {  
   return <>
     { condition  &&
       <audio autoPlay={true}>
-        <source src={audio} type="audio/mp3"/>
+        <source src={fileName} type="audio/mpeg"/>
       </audio>
     }
   </>

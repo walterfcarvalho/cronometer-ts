@@ -23,7 +23,7 @@
   font-weight: 600;
   line-height: 110%;
   text-align: center;
-  height: 10vh;
+  height: 5vh;
   margin-bottom: .2em;
   text-transform: uppercase;
   justify-content: center;
@@ -38,9 +38,8 @@
   margin-top: .5em;
   width: 95%;
   justify-content: space-around;
-  align-items: stretch;
-  margin:1em;
-  /* height: 9vh; */
+  align-items: center;
+  margin: 0.5em;
 }
 
 .task-play-controls-btn,
@@ -80,10 +79,10 @@ path {
 }
 
 .task-play-controls-prev-next {
-  margin-top: .5em;
   display: flex;
   width: 70%;
   justify-content: space-around;
+
 }
 
 .task-play-controls-prev-next-btn {

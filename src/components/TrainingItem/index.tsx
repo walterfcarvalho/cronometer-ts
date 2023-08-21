@@ -8,10 +8,11 @@ interface Props {
   buttons?: React.ReactNode
   children?: React.ReactNode
   readOnly?:boolean
+  isOpen?:boolean
   onClick?: () => void
 }
 
-const TrainingItem = ({ tsk, children, buttons, readOnly, onClick}: Props) => {
+const TrainingItem = ({ tsk, children, buttons, readOnly, isOpen, onClick}: Props) => {
   const { appData, setAppData } = useContext(AppContext)
   const id = appData.idxTask
 
@@ -36,7 +37,7 @@ const TrainingItem = ({ tsk, children, buttons, readOnly, onClick}: Props) => {
   }
 
   return <>
-    <details
+    <details open={isOpen? isOpen:false}
       onClick={onClick}
     >
       <summary className={ tsk.type == "p" ? "tn-group": "tn-item"} 

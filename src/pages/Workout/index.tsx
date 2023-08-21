@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../../components/AppContext/AppProvider"
 import Task from "../../components/Task"
 import { interval, warmup, coolDown } from "../../components/Const"
+import Head from "../../components/Head"
 
 const Workout = () => {
   const { appData } = useContext(AppContext)
@@ -56,14 +57,18 @@ const Workout = () => {
   }
 
   return <div className="task-container">
+    <Head
+      title={`${appData.tasks[appData.idxTask].label}`}
+      goBack={true}
+    />
 
     { workout &&
     
       workout.tasks.map((task: ITask, idx: number) =>
 
         idx === workout.idxTask &&
-
           <Task key={idx}
+            nextTask={task.type === 'i' && idx <= workout.tasks.length-2 ? workout.tasks[idx+1] : null }
             prevStep={prevStep}
             nextStep={nextStep}
             task={task}

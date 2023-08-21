@@ -50,6 +50,7 @@ return <>
       {appData.tasks.map((task: ITask, id: number) =>
 
         <TrainingItem
+          isOpen={true}
           onClick={ () => setIdx(id)} 
           tsk={task}    
           key={task.key}
